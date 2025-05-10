@@ -1,11 +1,14 @@
+import os
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
 import streamlit as st
 
+os.environ["STREAMLIT_WATCH_USE_POLLING"] = "true"
+
 model = AutoModelForSequenceClassification.from_pretrained("./model")
 tokenizer = AutoTokenizer.from_pretrained("./model")
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 model.to(device)
 
 
