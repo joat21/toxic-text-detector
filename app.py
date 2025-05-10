@@ -34,7 +34,7 @@ user_input = st.text_area("Текст")
 
 if st.button("Предсказать"):
     if user_input != "":
-        pred, prob = predict_toxicity(user_input)
+        pred, prob = predict_toxicity(user_input.lower())
 
         result = "Токсичный" if pred == 1 else "Не токсичный"
         st.write(f"Результат: {result}")
